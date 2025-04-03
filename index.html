@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A M Mehedi Hasan - Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Add Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base body font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            padding: 1rem;
+            /* Reduce padding */
+        }
+
+        /* Mobile menu links */
+        .mobile-link {
+            font-size: 0.875rem;
+            /* Smaller font size (14px) */
+            padding: 0.5rem 1rem;
+            /* Reduce padding for links */
+        }
+
+        /* Hamburger icon lines */
+        .hamburger-line {
+            width: 20px;
+            /* Reduce width */
+            height: 2px;
+            /* Reduce height */
+            background-color: #000000;
+            display: block;
+            margin: 4px auto;
+            /* Adjust spacing */
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hamburger animation on toggle */
+        #menu-toggle:checked+label .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #menu-toggle:checked+label .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked+label .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    </style>
+    <script>
+        // Basic Tailwind configuration (needed for browser build)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#000000', // Black
+                        'secondary': '#FFFFFF', // White
+                        'accent': '#CCCCCC', // Light gray
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-secondary text-primary antialiased">
+
+    <header
+        class="py-4 px-4 sm:px-6 md:px-8 lg:px-16 sticky top-0 bg-secondary z-20 border-b border-primary/10 backdrop-blur-sm bg-opacity-90">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl sm:text-2xl font-bold">A M Mehedi Hasan</h1>
+
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:text-primary/70 transition duration-300">About</a></li>
+                    <li><a href="#services" class="hover:text-primary/70 transition duration-300">Services</a></li>
+                    <li><a href="#portfolio" class="hover:text-primary/70 transition duration-300">Portfolio</a></li>
+                    <li><a href="#contact" class="hover:text-primary/70 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="md:hidden">
+                <input type="checkbox" id="menu-toggle" class="hidden">
+                <label for="menu-toggle" class="cursor-pointer p-2"> <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="mobile-menu"
+            class="md:hidden absolute top-full left-0 w-full bg-secondary border-b border-primary/10 transform -translate-y-[200%] transition-transform duration-300 ease-in-out shadow-lg">
+            <nav class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about"
+                    class="block px-2 py-2 hover:bg-primary/10 rounded transition duration-300 mobile-link">About</a>
+                <a href="#services"
+                    class="block px-2 py-2 hover:bg-primary/10 rounded transition duration-300 mobile-link">Services</a>
+                <a href="#portfolio"
+                    class="block px-2 py-2 hover:bg-primary/10 rounded transition duration-300 mobile-link">Portfolio</a>
+                <a href="#contact"
+                    class="block px-2 py-2 hover:bg-primary/10 rounded transition duration-300 mobile-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-12">
+
+        <section id="hero" class="text-center py-12 md:py-20">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Graphic Designer & Visual Artist
+            </h2>
+            <p class="text-base sm:text-lg md:text-xl text-primary/80 max-w-2xl mx-auto">Creating compelling visual
+                experiences that communicate and inspire.</p>
+        </section>
+
+        <section id="about" class="py-12 md:py-20 border-t border-primary/10">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <img src=" /photo.jpg" alt="A M Mehedi Hasan - Graphic Designer"
+                        class="rounded-full w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-cover border-4 border-primary shadow-md">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-4">About Me</h3>
+                    <p class="text-primary/80 mb-4">
+                        Hi, I'm A M Mehedi Hasan, a passionate graphic designer based in Bangladesh. I specialize in
+                        Branding, UI/UX Design, and Print Design. My goal is to translate ideas into visually stunning
+                        and effective designs.
+                    </p>
+                    <p class="text-primary/80">
+                        With 5+ years of experience, I've had the pleasure of working with diverse clients across
+                        various industries. I believe in the power of clean aesthetics and thoughtful design to make a
+                        lasting impact. Let's create something amazing together!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-12 md:py-20 border-t border-primary/10">
+            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-10 md:mb-12">My Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="package" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Branding & Identity</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Logo design, style guides, brand strategy.</p>
+                </div>
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="layout-template" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Web & UI Design</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">User interface design, website mockups, app design.
+                    </p>
+                </div>
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="pen-tool" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Illustration</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Custom illustrations, icons, digital art.</p>
+                </div>
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="printer" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Print Design</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Brochures, posters, business cards.</p>
+                </div>
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="image" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Social Media Graphics</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Engaging visuals for social platforms.</p>
+                </div>
+                <div
+                    class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
+                    <i data-lucide="video" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Motion Graphics (Basic)</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Simple animations, logo intros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-12 md:py-20 text-center border-t border-primary/10">
+            <h3 class="text-2xl sm:text-3xl font-bold mb-8">View My Work</h3>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+                <a href="https://www.behance.net/ammehedihasan" target="_blank" rel="noopener noreferrer"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-secondary transition duration-300 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.654 3c.461 0 .887.035 1.278.14.39.07.711.216.996.391s.497.426.641.747c.14.32.216.711.216 1.137 0 .496-.106.922-.356 1.242-.215.32-.566.606-.997.817.606.176 1.067.496 1.348.922s.461.957.461 1.563c0 .496-.105.922-.285 1.278a2.3 2.3 0 0 1-.782.887c-.32.215-.711.39-1.137.496a5.3 5.3 0 0 1-1.278.176L0 12.803V3zm-.285 3.978c.39 0 .71-.105.957-.285.246-.18.355-.497.355-.887 0-.216-.035-.426-.105-.567a1 1 0 0 0-.32-.355 1.8 1.8 0 0 0-.461-.176c-.176-.035-.356-.035-.567-.035H2.17v2.31c0-.005 2.2-.005 2.2-.005zm.105 4.193c.215 0 .426-.035.606-.07.176-.035.356-.106.496-.216s.25-.215.356-.39c.07-.176.14-.391.14-.641 0-.496-.14-.852-.426-1.102-.285-.215-.676-.32-1.137-.32H2.17v2.734h2.305zm6.858-.035q.428.427 1.278.426c.39 0 .746-.106 1.032-.286q.426-.32.53-.64h1.74c-.286.851-.712 1.457-1.278 1.848-.566.355-1.243.566-2.06.566a4.1 4.1 0 0 1-1.527-.285 2.8 2.8 0 0 1-1.137-.782 2.85 2.85 0 0 1-.712-1.172c-.175-.461-.25-.957-.25-1.528 0-.531.07-1.032.25-1.493.18-.46.426-.852.747-1.207.32-.32.711-.606 1.137-.782a4 4 0 0 1 1.493-.285c.606 0 1.137.105 1.598.355.46.25.817.532 1.102.958.285.39.496.851.641 1.348.07.496.105.996.07 1.563h-5.15c0 .58.21 1.11.496 1.396m2.24-3.732c-.25-.25-.642-.391-1.103-.391-.32 0-.566.07-.781.176s-.356.25-.496.39a.96.96 0 0 0-.25.497c-.036.175-.07.32-.07.46h3.196c-.07-.526-.25-.882-.497-1.132zm-3.127-3.728h3.978v.957h-3.978z" />
+                    </svg>
+                    Behance
+                </a>
+                <a href="https://dribbble.com/ammehedihasan" target="_blank" rel="noopener noreferrer"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-secondary transition duration-300 font-medium">
+                    <i data-lucide="dribbble" class="lucide"></i> Dribbble
+                </a>
+            </div>
+        </section>
+
+        <section id="contact" class="py-12 md:py-20 text-center border-t border-primary/10">
+            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Get In Touch</h3>
+            <p class="text-primary/80 mb-8">Interested in collaborating? Reach out!</p>
+            <p class="text-lg font-semibold mb-6">
+                <a href="mailto:hello@ammehedihasan.com"
+                    class="hover:text-primary/70 transition duration-300 break-words inline-flex items-center justify-center">
+                    <i data-lucide="mail" class="lucide email-icon mr-2">mail</i> hello@ammehedihasan.com
+                </a>
+            </p>
+            <div class="flex justify-center space-x-5 sm:space-x-6">
+                <a href="https://linkedin.com/in/ammehedihasan" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="LinkedIn Profile">
+                    <i data-lucide="linkedin" class="lucide"></i> <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://instagram.com/ammehedihasann" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="Instagram Profile">
+                    <i data-lucide="instagram" class="lucide"></i> <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://youtube.com/@ammehedihasan" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="Twitter Profile">
+                    <i data-lucide="youtube" class="lucide"></i> <span class="sr-only">YouTube</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-secondary py-6 px-4 mt-12">
+        <div class="container mx-auto text-center text-xs sm:text-sm">
+            &copy; <span id="current-year"></span> A M Mehedi Hasan. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuToggle.addEventListener('change', function () {
+            if (this.checked) {
+                mobileMenu.style.transform = 'translateY(0)';
+            } else {
+                mobileMenu.style.transform = 'translateY(-200%)'; // Adjust if needed
+            }
+        });
+
+        // Function to close menu
+        function closeMenu() {
+            menuToggle.checked = false;
+            mobileMenu.style.transform = 'translateY(-200%)'; // Adjust if needed
+        }
+
+        // Close menu when a mobile link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Close mobile menu if open before scrolling
+                if (menuToggle.checked) {
+                    closeMenu();
+                }
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Use requestAnimationFrame for smoother scroll timing after menu close
+                    requestAnimationFrame(() => {
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
