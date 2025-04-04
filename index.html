@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A M Mehedi Hasan - Graphic Designer</title>
+    <link rel="icon" href="/favicon.svg" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Add Lucide Icons CDN -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -16,7 +17,7 @@
     <style>
         /* Base body font */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         /* Mobile menu transition */
@@ -71,7 +72,7 @@
                         'accent': '#CCCCCC', // Light gray
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Poppins', 'sans-serif'],
                     },
                 }
             }
@@ -82,9 +83,12 @@
 <body class="bg-secondary text-primary antialiased">
 
     <header
-        class="py-4 px-4 sm:px-6 md:px-8 lg:px-16 sticky top-0 bg-secondary z-20 border-b border-primary/10 backdrop-blur-sm bg-opacity-90">
+        class="py-2 px-4 sm:px-6 md:px-8 lg:px-16 sticky top-0 bg-secondary z-20 border-b border-primary/10 backdrop-blur-sm bg-opacity-90 text-primary">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl sm:text-2xl font-bold">A M Mehedi Hasan</h1>
+            <div class="flex items-center">
+                <img src="/logo.svg" alt="Logo" class="h-7 w-7 mr-2">
+                <h1 class="text-xl sm:text-2xl font-bold text-black">A M Mehedi Hasan</h1>
+            </div>
 
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
@@ -105,7 +109,7 @@
         </div>
 
         <div id="mobile-menu"
-            class="md:hidden absolute top-full left-0 w-full bg-secondary border-b border-primary/10 transform -translate-y-[200%] transition-transform duration-300 ease-in-out shadow-lg">
+            class="md:hidden absolute top-full left-0 w-full bg-secondary border-b border-primary/10 transform -translate-y-[200%] transition-transform duration-300 ease-in-out shadow-lg text-primary">
             <nav class="px-4 pt-2 pb-4 space-y-2">
                 <a href="#about"
                     class="block px-2 py-2 hover:bg-primary/10 rounded transition duration-300 mobile-link">About</a>
@@ -127,6 +131,12 @@
             <p class="text-base sm:text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-8">
                 Creating compelling visual experiences that communicate and inspire.
             </p>
+            <!-- Email Contact Button -->
+            <a href="mailto:hello@ammehedihasan.com"
+                class="inline-block bg-primary text-secondary px-6 py-3 rounded-lg font-medium hover:bg-primary/80 transition duration-300 mb-8">
+                Get in Touch
+            </a>
+            <!-- Down Arrow -->
             <a href="#about" class="mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary animate-bounce" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -144,15 +154,20 @@
                 <div class="md:w-2/3 text-center md:text-left">
                     <h3 class="text-2xl sm:text-3xl font-bold mb-4">About Me</h3>
                     <p class="text-primary/80 mb-4">
-                        Hi, I'm A M Mehedi Hasan, a passionate graphic designer based in Bangladesh. I specialize in
-                        Branding, UI/UX Design, and Print Design. My goal is to translate ideas into visually stunning
-                        and effective designs.
+                        Hi, I'm professional graphic designer from Bangladesh with expertise in branding, social media
+                        design and print design.
+                        Focused on creating effective visual solutions that deliver results.
                     </p>
-                    <p class="text-primary/80">
-                        With 5+ years of experience, I've had the pleasure of working with diverse clients across
-                        various industries. I believe in the power of clean aesthetics and thoughtful design to make a
-                        lasting impact. Let's create something amazing together!
+                    <p class="text-primary/80 mb-6">
+                        Over 5 years of experience serving clients across multiple industries. Specializing in clean,
+                        functional design that communicates clearly and drives engagement.
                     </p>
+                    <!-- Resume Download Button -->
+                    <a href="https://docs.google.com/document/d/1wsoempjpmAt-hCpDJQKBK-tLboYT-QiKprP26lBZbSY/export?format=pdf"
+                        download
+                        class="inline-block bg-primary text-secondary px-6 py-3 rounded-lg font-medium hover:bg-primary/80 transition duration-300">
+                        Download Resume
+                    </a>
                 </div>
             </div>
         </section>
@@ -168,9 +183,9 @@
                 </div>
                 <div
                     class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
-                    <i data-lucide="layout-template" class="block mx-auto mb-4 text-primary"></i>
-                    <h4 class="text-lg sm:text-xl font-bold mb-2">Web & UI Design</h4>
-                    <p class="text-primary/80 text-sm sm:text-base">User interface design, website mockups, app design.
+                    <i data-lucide="image" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Social Media Graphics</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Engaging visuals for social platforms.
                     </p>
                 </div>
                 <div
@@ -187,9 +202,9 @@
                 </div>
                 <div
                     class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
-                    <i data-lucide="image" class="block mx-auto mb-4 text-primary"></i>
-                    <h4 class="text-lg sm:text-xl font-bold mb-2">Social Media Graphics</h4>
-                    <p class="text-primary/80 text-sm sm:text-base">Engaging visuals for social platforms.</p>
+                    <i data-lucide="package-open" class="block mx-auto mb-4 text-primary"></i>
+                    <h4 class="text-lg sm:text-xl font-bold mb-2">Packaging & Covers</h4>
+                    <p class="text-primary/80 text-sm sm:text-base">Product packaging, album covers, book covers.</p>
                 </div>
                 <div
                     class="border border-primary/20 p-6 md:p-8 rounded-lg text-center hover:shadow-lg transition duration-300 bg-white">
@@ -229,6 +244,10 @@
                 </a>
             </p>
             <div class="flex justify-center space-x-5 sm:space-x-6">
+                <a href="https://youtube.com/@ammehedihasan" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="Twitter Profile">
+                    <i data-lucide="youtube" class="lucide"></i> <span class="sr-only">YouTube</span>
+                </a>
                 <a href="https://linkedin.com/in/ammehedihasan" target="_blank" rel="noopener noreferrer"
                     class="text-primary hover:text-primary/70 transition duration-300" aria-label="LinkedIn Profile">
                     <i data-lucide="linkedin" class="lucide"></i> <span class="sr-only">LinkedIn</span>
@@ -237,9 +256,20 @@
                     class="text-primary hover:text-primary/70 transition duration-300" aria-label="Instagram Profile">
                     <i data-lucide="instagram" class="lucide"></i> <span class="sr-only">Instagram</span>
                 </a>
-                <a href="https://youtube.com/@ammehedihasan" target="_blank" rel="noopener noreferrer"
+                <a href="https://threads/@ammehedihasann" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="Threads Profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" />
+                    </svg>
+                </a>
+                <a href="https://x.com/@ammehedihasann" target="_blank" rel="noopener noreferrer"
                     class="text-primary hover:text-primary/70 transition duration-300" aria-label="Twitter Profile">
-                    <i data-lucide="youtube" class="lucide"></i> <span class="sr-only">YouTube</span>
+                    <i data-lucide="twitter" class="lucide"></i> <span class="sr-only">Twitter</span>
+                </a>
+                <a href="https://facebook.com/@ammehedihasann" target="_blank" rel="noopener noreferrer"
+                    class="text-primary hover:text-primary/70 transition duration-300" aria-label="Twitter Profile">
+                    <i data-lucide="facebook" class="lucide"></i> <span class="sr-only">facebook</span>
                 </a>
             </div>
         </section>
@@ -251,6 +281,17 @@
             &copy; <span id="current-year"></span> A M Mehedi Hasan. All Rights Reserved.
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+8801753366487" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-4 right-4 bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-300"
+        aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-whatsapp"
+            viewBox="0 0 16 16">
+            <path
+                d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+        </svg>
+    </a>
 
     <script>
         // Set current year in footer
