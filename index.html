@@ -21,7 +21,6 @@
     <!-- Tailwind Config for Custom Colors/Fonts -->
     <script>
         tailwind.config = {
-            darkMode: 'media', // Sync with device settings
             theme: {
                 extend: {
                     fontFamily: {
@@ -95,19 +94,6 @@
             background: #9ca3af;
         }
 
-        /* Dark Mode Scrollbar */
-        @media (prefers-color-scheme: dark) {
-            ::-webkit-scrollbar-track {
-                background: #111111;
-            }
-            ::-webkit-scrollbar-thumb {
-                background: #374151;
-            }
-            ::-webkit-scrollbar-thumb:hover {
-                background: #4b5563;
-            }
-        }
-
         /* Animation Utilities */
         .reveal {
             opacity: 0;
@@ -136,20 +122,47 @@
             background-image: linear-gradient(to right, #0140ff, #9292fc); /* Blue Ribbon to Malibu */
         }
 
-        /* Dark Mode Overrides */
-        @media (prefers-color-scheme: dark) {
-            .glass {
-                background: rgba(17, 17, 17, 0.8); /* Night with opacity */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            }
-            .text-gradient {
-                background-image: linear-gradient(to right, #f7f7f7, #9292fc); /* Sea Salt to Malibu */
-            }
+        /* Google Form Styling to Blend with Website */
+        .google-form-wrapper {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .google-form-wrapper iframe {
+            border: none !important;
+            border-radius: 1rem !important;
+        }
+
+        /* Hide Google Form branding and headers */
+        .google-form-wrapper iframe::before {
+            content: '';
+            display: block;
+        }
+
+        /* Light Mode: Match website background */
+        .google-form-wrapper {
+            background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Enhanced Form Content Styling */
+        .google-form-wrapper iframe {
+            filter: contrast(1.05) brightness(1) saturate(1.1);
+            backdrop-filter: blur(0px);
+        }
+
+        /* Additional styling via CSS variables for form inputs */
+        .google-form-wrapper {
+            --form-bg: #ffffff;
+            --form-text: #111111;
+            --form-border: #e0e0e0;
+            --form-focus: #0140ff;
+            --form-label: #374151;
         }
     </style>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-seasalt antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
 
     <!-- Navigation -->
     <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
@@ -157,25 +170,25 @@
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="logo.svg" alt="Logo" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300 dark:brightness-0 dark:invert">
-                    <span class="font-display font-bold text-lg tracking-tight text-slate-900 dark:text-seasalt group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">A M Mehedi Hasan</span>
+                    <img src="logo.svg" alt="Logo" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                    <span class="font-display font-bold text-lg tracking-tight text-slate-900 group-hover:text-brand-500 transition-colors">A M Mehedi Hasan</span>
                 </a>
 
                 <!-- Desktop Menu -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">About</a>
-                    <a href="#services" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Services</a>
-                    <a href="#portfolio" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">Work</a>
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-500 transition-colors">About</a>
+                    <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-500 transition-colors">Services</a>
+                    <a href="#portfolio" class="text-sm font-medium text-slate-600 hover:text-brand-500 transition-colors">Work</a>
                 </nav>
 
                 <!-- CTA & Mobile Toggle -->
                 <div class="flex items-center gap-4">
-                    <a href="#contact" class="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-medium text-white dark:text-night bg-night dark:bg-seasalt rounded-full hover:bg-brand-500 dark:hover:bg-brand-400 hover:text-white dark:hover:text-white transition-all duration-300 shadow-lg shadow-brand-500/20 transform hover:-translate-y-0.5">
+                    <a href="#contact" class="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-night rounded-full hover:bg-brand-500 hover:text-white transition-all duration-300 shadow-lg shadow-brand-500/20 transform hover:-translate-y-0.5">
                         Let's Talk
                     </a>
                     
                     <!-- Hamburger Button -->
-                    <button id="menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-night dark:hover:text-white focus:outline-none">
+                    <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-night focus:outline-none">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -183,15 +196,16 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-seasalt dark:bg-night border-b border-slate-100 dark:border-slate-800 shadow-xl transform -translate-y-[150%] transition-transform duration-300 md:hidden flex flex-col p-4">
-            <a href="#about" class="p-3 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg mobile-link">About</a>
-            <a href="#services" class="p-3 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg mobile-link">Services</a>
-            <a href="#portfolio" class="p-3 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg mobile-link">Portfolio</a>
-            <a href="#contact" class="p-3 text-brand-500 dark:text-brand-400 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg mobile-link">Contact Me</a>
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-seasalt border-b border-slate-100 shadow-xl transform -translate-y-[150%] transition-transform duration-300 md:hidden flex flex-col p-4">
+            <a href="#about" class="p-3 text-slate-600 font-medium hover:bg-slate-100 rounded-lg mobile-link">About</a>
+            <a href="#services" class="p-3 text-slate-600 font-medium hover:bg-slate-100 rounded-lg mobile-link">Services</a>
+            <a href="#portfolio" class="p-3 text-slate-600 font-medium hover:bg-slate-100 rounded-lg mobile-link">Portfolio</a>
+            <a href="#contact" class="p-3 text-brand-500 font-bold hover:bg-slate-100 rounded-lg mobile-link">Contact Me</a>
         </div>
     </header>
 
-    <main class="pt-24 overflow-hidden">
+    <!-- Increased top padding on mobile (pt-36) to prevent header overlap -->
+    <main class="pt-36 md:pt-24 overflow-hidden">
 
         <!-- Hero Section -->
         <section id="hero" class="min-h-[90vh] flex items-center justify-center relative px-6">
@@ -202,12 +216,12 @@
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div class="order-2 md:order-1 text-center md:text-left reveal active">
                     
-                    <h1 class="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-900 dark:text-seasalt mb-6">
+                    <h1 class="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight text-slate-900 mb-6">
                         Designing for <br>
                         <span id="typewriter" class="text-gradient">Impact.</span><span class="animate-typewriter text-brand-500">_</span>
                     </h1>
                     
-                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    <p class="text-lg text-slate-600 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
                         I'm A M Mehedi Hasan. A graphic designer bridging the gap between functional logic and visual aesthetics.
                     </p>
 
@@ -218,14 +232,14 @@
                             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </a>
                         <!-- Secondary Button -->
-                        <a href="#contact" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-seasalt border border-slate-200 dark:border-slate-700 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <a href="#contact" class="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-xl font-semibold hover:bg-slate-100 transition-all duration-300 flex items-center justify-center gap-2">
                             <i data-lucide="message-square" class="w-4 h-4"></i>
                             Contact Me
                         </a>
                     </div>
                     
                     <!-- Social Proof / Trusted By -->
-                    <div class="mt-12 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center gap-4 text-sm text-slate-500 dark:text-slate-500">
+                          <div class="mt-12 pt-8 mb-6 sm:mb-0 border-t border-slate-200/60 flex flex-col sm:flex-row items-center gap-4 text-sm text-slate-500">
                         <span>Trusted by clients from:</span>
                         <div class="flex gap-4 opacity-60 grayscale hover:grayscale-0 transition-all">
                            <span class="font-bold">Upwork</span>
@@ -237,60 +251,64 @@
                 <div class="order-1 md:order-2 flex justify-center reveal delay-200">
                     <div class="relative z-10">
                         <!-- Abstract shapes behind image -->
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-100 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-[2rem] transform rotate-6 scale-105 -z-10 transition-colors"></div>
-                        <img src="photo.jpg" alt="A M Mehedi Hasan" class="w-72 h-72 md:w-96 md:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white dark:border-night rotate-[-3deg] hover:rotate-0 transition-transform duration-500 ease-out relative z-10">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-100 to-slate-100 rounded-[2rem] transform rotate-6 scale-105 -z-10 transition-colors"></div>
+                        <img src="photo.png" alt="A M Mehedi Hasan" class="w-72 h-72 md:w-96 md:h-96 object-cover rounded-2xl shadow-2xl border-4 border-white rotate-[-3deg] hover:rotate-0 transition-transform duration-500 ease-out relative z-10">
                         
                         <!-- Floating Icons (Software Stack) -->
                         
-                        <!-- 1. Figma (Top Right) -->
-                        <div class="absolute -top-10 -right-4 md:-right-10 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg animate-float border border-slate-100 dark:border-slate-700 z-20" style="animation-delay: 0s;">
-                            <svg class="w-8 h-8" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38H19V28.5Z" fill="#1ABCFE"/>
-                                <path d="M9.5 38C6.98044 38 4.56408 36.9991 2.78249 35.2175C1.00089 33.4359 0 31.0196 0 28.5C0 25.9804 1.00089 23.5641 2.78249 21.7825C4.56408 20.0009 6.98044 19 9.5 19H19V38H9.5Z" fill="#0ACF83"/>
-                                <path d="M19 0H28.5C31.0196 0 33.4359 1.00089 35.2175 2.78249C36.9991 4.56408 38 6.98044 38 9.5C38 12.0196 36.9991 14.4359 35.2175 16.2175C33.4359 17.9991 31.0196 19 28.5 19H19V0Z" fill="#FF7262"/>
-                                <path d="M19 0H9.5C6.98044 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.98044 0 6.98044 0 9.5C0 12.0196 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98044 19 9.5 19H19V0Z" fill="#F24E1E"/>
-                                <path d="M9.5 57C12.0196 57 14.4359 55.9991 16.2175 54.2175C17.9991 52.4359 19 50.0196 19 47.5V38H9.5C6.98044 38 4.56408 39.0009 2.78249 40.7825C1.00089 42.5641 0 44.9804 0 47.5C0 50.0196 1.00089 52.4359 2.78249 54.2175C4.56408 55.9991 6.98044 57 9.5 57Z" fill="#A259FF"/>
+                        <!-- 1. Figma (Top Right) - Official Figma Logo SVG -->
+                        <div class="absolute -top-10 -right-4 md:-right-10 bg-white p-3 rounded-xl shadow-lg animate-float border border-slate-100 z-20" style="animation-delay: 0s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" class="w-8 h-8">
+                                <style>.st0{fill:#0acf83}.st1{fill:#a259ff}.st2{fill:#f24e1e}.st3{fill:#ff7262}.st4{fill:#1abcfe}</style>
+                                <path class="st0" d="M50 300c27.6 0 50-22.4 50-50v-50H50c-27.6 0-50 22.4-50 50s22.4 50 50 50z"/>
+                                <path class="st1" d="M0 150c0-27.6 22.4-50 50-50h50v100H50c-27.6 0-50-22.4-50-50z"/>
+                                <path class="st2" d="M0 50C0 22.4 22.4 0 50 0h50v100H50C22.4 100 0 77.6 0 50z"/>
+                                <path class="st3" d="M100 0h50c27.6 0 50 22.4 50 50s-22.4 50-50 50h-50V0z"/>
+                                <path class="st4" d="M200 150c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50z"/>
                             </svg>
                         </div>
 
-                        <!-- 2. Adobe Photoshop (Top Left) -->
-                        <div class="absolute -top-6 -left-2 md:-left-8 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg animate-float border border-slate-100 dark:border-slate-700 z-20" style="animation-delay: 1.5s;">
-                            <div class="w-8 h-8 bg-[#001E36] rounded-md flex items-center justify-center border border-[#31A8FF]">
-                                <span class="text-[#31A8FF] font-bold text-sm leading-none pt-1">Ps</span>
-                            </div>
+                        <!-- 2. Adobe Photoshop (Top Left) - Inline SVG -->
+                        <div class="absolute -top-6 -left-2 md:-left-8 bg-white p-3 rounded-xl shadow-lg animate-float border border-slate-100 z-20" style="animation-delay: 1.5s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-8 h-8">
+                                <rect width="100" height="100" fill="#001E36" rx="8"/>
+                                <text x="50" y="70" font-size="60" font-weight="bold" fill="#31A8FF" text-anchor="middle" font-family="Arial">Ps</text>
+                            </svg>
                         </div>
 
-                        <!-- 3. Adobe Illustrator (Middle Left) -->
-                        <div class="absolute top-1/3 -left-6 md:-left-12 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg animate-float border border-slate-100 dark:border-slate-700 z-20" style="animation-delay: 0.8s;">
-                            <div class="w-8 h-8 bg-[#330000] rounded-md flex items-center justify-center border border-[#FF9A00]">
-                                <span class="text-[#FF9A00] font-bold text-sm leading-none pt-1">Ai</span>
-                            </div>
+                        <!-- 3. Adobe Illustrator (Middle Left) - Inline SVG -->
+                        <div class="absolute top-1/3 -left-6 md:-left-12 bg-white p-3 rounded-xl shadow-lg animate-float border border-slate-100 z-20" style="animation-delay: 0.8s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-8 h-8">
+                                <rect width="100" height="100" fill="#330000" rx="8"/>
+                                <text x="50" y="70" font-size="60" font-weight="bold" fill="#FF9A00" text-anchor="middle" font-family="Arial">Ai</text>
+                            </svg>
                         </div>
 
-                        <!-- 4. Adobe InDesign (Bottom Left) -->
-                        <div class="absolute bottom-12 -left-4 md:-left-8 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg animate-float border border-slate-100 dark:border-slate-700 z-20" style="animation-delay: 2.2s;">
-                            <div class="w-8 h-8 bg-[#49021F] rounded-md flex items-center justify-center border border-[#FF3366]">
-                                <span class="text-[#FF3366] font-bold text-sm leading-none pt-1">Id</span>
-                            </div>
+                        <!-- 4. Adobe InDesign (Bottom Left) - Inline SVG -->
+                        <div class="absolute bottom-12 -left-4 md:-left-8 bg-white p-3 rounded-xl shadow-lg animate-float border border-slate-100 z-20" style="animation-delay: 2.2s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-8 h-8">
+                                <rect width="100" height="100" fill="#530118" rx="8"/>
+                                <text x="50" y="70" font-size="60" font-weight="bold" fill="#FD3068" text-anchor="middle" font-family="Arial">Id</text>
+                            </svg>
                         </div>
 
-                        <!-- 5. Affinity (Top Right Lower) -->
-                        <div class="absolute top-1/4 -right-8 md:-right-16 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-lg animate-float border border-slate-100 dark:border-slate-700 z-20" style="animation-delay: 3s;">
-                            <svg class="w-8 h-8 text-slate-800 dark:text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M5.9 21.8c-.8 0-1.6-.3-2.3-.9-.6-.6-1-1.4-1-2.2 0-.8.4-1.6 1-2.2L12 4.2l8.4 12.3c.6.6 1 1.4 1 2.2 0 .8-.4 1.6-1 2.2-.6.6-1.4.9-2.3.9H5.9zm0-2h12.2c.3 0 .5-.1.7-.3.2-.2.3-.5.3-.7 0-.3-.1-.5-.3-.7L12 8.4l-6.8 9.7c-.2.2-.3.5-.3.7 0 .3.1.5.3.7.2.2.5.3.7.3z"/>
-                                <path d="M12 4.2L3.6 16.5c-.6.6-1 1.4-1 2.2 0 .8.4 1.6 1 2.2.6.6 1.4.9 2.3.9h12.2c.9 0 1.7-.3 2.3-.9.6-.6 1-1.4 1-2.2 0-.8-.4-1.6-1-2.2L12 4.2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <!-- 5. Affinity Designer (Top Right Lower) - Official Affinity Logo SVG -->
+                        <div class="absolute top-1/4 -right-8 md:-right-16 bg-white p-3 rounded-xl shadow-lg animate-float border border-slate-100 z-20" style="animation-delay: 3s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" class="w-8 h-8" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <rect x="0" y="0" width="240" height="240" rx="40" style="fill:#a7f175;"/>
+                                <path d="M112.908,165.979c-10.413,0 -17.037,-6.317 -17.037,-14.329c0,-34.287 90.164,-41.151 90.164,-77.563c0,-22.213 -25.731,-31.787 -58.577,-31.787c-19.98,0 -42.571,3.698 -63.552,10.315l0,43.438c30.919,-22.52 65.272,-32.16 87.4,-32.16c13.914,0 23.355,3.882 23.355,10.838c0,28.658 -124.353,24.117 -124.353,86.042c0,23.736 16.321,37.335 39.283,37.335c34.732,0 61.003,-33.753 80.657,-74.897l3.982,1.43c-10.351,25.143 -31.771,52.712 -35.943,70.434l44.715,0l0,-91.685l-10.327,0c-14.99,32.574 -36.957,62.59 -59.767,62.59" style="fill:#000000;fill-rule:nonzero;"/>
                             </svg>
                         </div>
                         
                         <!-- Floating Badge (Experience) -->
-                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl animate-float border border-slate-100 dark:border-slate-700 transition-colors z-20" style="animation-delay: 1s;">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl animate-float border border-slate-100 transition-colors z-20" style="animation-delay: 1s;">
                             <div class="flex items-center gap-3">
-                                <div class="bg-brand-50 dark:bg-slate-700 p-2 rounded-lg text-brand-500 dark:text-brand-400">
+                                <div class="bg-brand-50 p-2 rounded-lg text-brand-500">
                                     <i data-lucide="check-circle-2" class="w-6 h-6"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase">Experience</p>
-                                    <p class="font-bold text-slate-900 dark:text-white">5+ Years</p>
+                                    <p class="text-xs text-slate-500 font-semibold uppercase">Experience</p>
+                                    <p class="font-bold text-slate-900">5+ Years</p>
                                 </div>
                             </div>
                         </div>
@@ -300,66 +318,77 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="py-24 bg-white dark:bg-night relative transition-colors">
+        <section id="services" class="py-24 bg-white relative transition-colors">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                    <h2 class="font-display font-bold text-3xl md:text-4xl text-slate-900 dark:text-seasalt mb-4">My Expertise</h2>
-                    <p class="text-slate-600 dark:text-slate-400">I help brands stand out through clean, functional, and result-oriented design solutions.</p>
+                    <h2 class="font-display font-bold text-3xl md:text-4xl text-slate-900 mb-4">My Expertise</h2>
+                    <p class="text-slate-600">I help brands stand out through clean, functional, and result-oriented design solutions.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Service Card 1 -->
-                    <div class="group p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
-                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-center text-brand-500 dark:text-brand-400 mb-6 group-hover:bg-brand-500 group-hover:text-white dark:group-hover:text-white transition-colors">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="package" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-slate-900 dark:text-seasalt mb-3">Branding & Identity</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Branding & Identity</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
                             Crafting memorable logos and comprehensive style guides that define your brand's voice and visual strategy.
                         </p>
                     </div>
 
                     <!-- Service Card 2 -->
-                    <div class="group p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
-                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-center text-brand-500 dark:text-brand-400 mb-6 group-hover:bg-brand-500 group-hover:text-white dark:group-hover:text-white transition-colors">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="layers" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-slate-900 dark:text-seasalt mb-3">Social Media Visuals</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Social Media Visuals</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
                             Designing engaging graphics optimized for engagement across Instagram, LinkedIn, Facebook, and Twitter.
                         </p>
                     </div>
 
                     <!-- Service Card 3 -->
-                    <div class="group p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-200">
-                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-center text-brand-500 dark:text-brand-400 mb-6 group-hover:bg-brand-500 group-hover:text-white dark:group-hover:text-white transition-colors">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-200">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="pen-tool" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-slate-900 dark:text-seasalt mb-3">Illustration</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Illustration</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
                             Custom digital illustrations and icon sets to add a unique, human touch to your digital products.
                         </p>
                     </div>
 
                     <!-- Service Card 4 -->
-                    <div class="group p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
-                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-center text-brand-500 dark:text-brand-400 mb-6 group-hover:bg-brand-500 group-hover:text-white dark:group-hover:text-white transition-colors">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="printer" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-slate-900 dark:text-seasalt mb-3">Print Design</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Print Design</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
                             High-quality layouts for brochures, business cards, posters, and marketing collateral.
                         </p>
                     </div>
 
                     <!-- Service Card 5 -->
-                    <div class="group p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-600 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
-                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-center text-brand-500 dark:text-brand-400 mb-6 group-hover:bg-brand-500 group-hover:text-white dark:group-hover:text-white transition-colors">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="box" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-slate-900 dark:text-seasalt mb-3">Packaging Design</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Packaging Design</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
                             Eye-catching product packaging and cover art that grabs attention on the shelf.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 6 -->
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-200">
+                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                            <i data-lucide="film" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Video Editing</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Professional video editing with color grading, transitions, and effects to create engaging visual content.
                         </p>
                     </div>
                 </div>
@@ -367,7 +396,7 @@
         </section>
 
         <!-- About / Resume Section -->
-        <section id="about" class="py-24 bg-night dark:bg-slate-900 text-seasalt relative overflow-hidden">
+        <section id="about" class="py-24 bg-night text-seasalt relative overflow-hidden">
              <!-- Background Texture -->
              <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
              
@@ -400,7 +429,7 @@
                         </div>
                         <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 translate-y-8">
                             <h3 class="font-display font-bold text-3xl text-brand-500 mb-1 counter" data-target="5" data-suffix="+">0+</h3>
-                            <p class="text-sm text-slate-400">Years Exp.</p>
+                            <p class="text-sm text-slate-400">Years Experience</p>
                         </div>
                     </div>
                 </div>
@@ -408,12 +437,12 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="py-24 bg-slate-50 dark:bg-night transition-colors">
+        <section id="portfolio" class="py-24 bg-slate-50 transition-colors">
             <div class="container mx-auto px-6">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
                     <div>
-                        <h2 class="font-display font-bold text-3xl md:text-4xl text-slate-900 dark:text-seasalt mb-4">Selected Work</h2>
-                        <p class="text-slate-600 dark:text-slate-400">Explore my latest projects on professional networks.</p>
+                        <h2 class="font-display font-bold text-3xl md:text-4xl text-slate-900 mb-4">Selected Work</h2>
+                        <p class="text-slate-600">Explore my latest projects on professional networks.</p>
                     </div>
                 </div>
 
@@ -461,46 +490,68 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-white dark:bg-night transition-colors">
+        <section id="contact" class="py-24 bg-white transition-colors">
             <div class="container mx-auto px-6 max-w-4xl text-center reveal">
-                <div class="inline-block p-3 rounded-full bg-brand-50 dark:bg-slate-800 text-brand-500 dark:text-brand-400 mb-6">
+                <div class="inline-block p-3 rounded-full bg-brand-50 text-brand-500 mb-6">
                     <i data-lucide="message-circle" class="w-6 h-6"></i>
                 </div>
-                <h2 class="font-display font-bold text-4xl text-slate-900 dark:text-seasalt mb-6">Let's create something meaningful together.</h2>
-                <p class="text-slate-600 dark:text-slate-400 text-lg mb-10">Whether you need a brand overhaul or a social media refresh, fill out the form below.</p>
+                <h2 class="font-display font-bold text-4xl text-slate-900 mb-6">Let's create something meaningful together.</h2>
+                <p class="text-slate-600 text-lg mb-10">Whether you need a brand overhaul or a social media refresh, fill out the form below.</p>
                 
                 <!-- Contact Form -->
                 <form action="#" method="POST" class="max-w-xl mx-auto space-y-6 text-left mb-16">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all dark:text-white" placeholder="Your Name">
+                        <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all" placeholder="Your Name">
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all dark:text-white" placeholder="your@email.com">
+                        <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all" placeholder="your@email.com">
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all dark:text-white resize-none" placeholder="Tell me about your project..."></textarea>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all resize-none" placeholder="Tell me about your project..."></textarea>
                     </div>
-                    <button type="submit" class="w-full px-8 py-4 bg-night dark:bg-seasalt text-white dark:text-night rounded-xl font-bold text-lg hover:bg-brand-500 dark:hover:bg-brand-400 dark:hover:text-white hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-500/10 dark:shadow-none flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full px-8 py-4 bg-night text-white rounded-xl font-bold text-lg hover:bg-brand-500 hover:scale-[1.02] transition-all duration-300 shadow-xl shadow-brand-500/10 flex items-center justify-center gap-2">
                         Send Message
                         <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                 </form>
 
-                <div class="mt-8 flex flex-wrap justify-center gap-6 border-t border-slate-100 dark:border-slate-800 pt-12">
-                    <a href="https://linkedin.com/in/ammehedihasan" target="_blank" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 hover:bg-[#0077b5] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                <div class="mt-8 flex flex-wrap justify-center gap-6 border-t border-slate-100 pt-12">
+                    <a href="https://linkedin.com/in/ammehedihasan" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#0077b5] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                         <i data-lucide="linkedin" class="w-6 h-6"></i>
                     </a>
                     
-                    <a href="https://youtube.com/@ammehedihasan" target="_blank" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 hover:bg-[#FF0000] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                    <a href="https://youtube.com/@ammehedihasan" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#FF0000] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
                         <i data-lucide="youtube" class="w-6 h-6"></i>
                     </a>
 
+                    <!-- Instagram Link -->
+                    <a href="https://instagram.com/ammehedihasann" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#E4405F] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+
+                    <!-- Threads Link -->
+                    <a href="https://threads.net/@ammehedihasann" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#000000] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6" fill="currentColor"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M331.5 235.7c2.2 .9 4.2 1.9 6.3 2.8 29.2 14.1 50.6 35.2 61.8 61.4 15.7 36.5 17.2 95.8-30.3 143.2-36.2 36.2-80.3 52.5-142.6 53l-.3 0c-70.2-.5-124.1-24.1-160.4-70.2-32.3-41-48.9-98.1-49.5-169.6l0-.5C17 184.3 33.6 127.2 65.9 86.2 102.2 40.1 156.2 16.5 226.4 16l.3 0c70.3 .5 124.9 24 162.3 69.9 18.4 22.7 32 50 40.6 81.7l-40.4 10.8c-7.1-25.8-17.8-47.8-32.2-65.4-29.2-35.8-73-54.2-130.5-54.6-57 .5-100.1 18.8-128.2 54.4-26.2 33.3-39.8 81.5-40.3 143.2 .5 61.7 14.1 109.9 40.3 143.3 28 35.6 71.2 53.9 128.2 54.4 51.4-.4 85.4-12.6 113.7-40.9 32.3-32.2 31.7-71.8 21.4-95.9-6.1-14.2-17.1-26-31.9-34.9-3.7 26.9-11.8 48.3-24.7 64.8-17.1 21.8-41.4 33.6-72.7 35.3-23.6 1.3-46.3-4.4-63.9-16-20.8-13.8-33-34.8-34.3-59.3-2.5-48.3 35.7-83 95.2-86.4 21.1-1.2 40.9-.3 59.2 2.8-2.4-14.8-7.3-26.6-14.6-35.2-10-11.7-25.6-17.7-46.2-17.8l-.7 0c-16.6 0-39 4.6-53.3 26.3l-34.4-23.6c19.2-29.1 50.3-45.1 87.8-45.1l.8 0c62.6 .4 99.9 39.5 103.7 107.7l-.2 .2 .1 0zm-156 68.8c1.3 25.1 28.4 36.8 54.6 35.3 25.6-1.4 54.6-11.4 59.5-73.2-13.2-2.9-27.8-4.4-43.4-4.4-4.8 0-9.6 .1-14.4 .4-42.9 2.4-57.2 23.2-56.2 41.8l-.1 .1z"/></svg>
+                    </a>
+
+                    <!-- Twitter/X Link -->
+                    <a href="https://x.com/ammehedihasann" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#000000] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-6 h-6" fill="currentColor"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z"/></svg>
+                    </a>
+
                     <!-- Hikmah Link -->
-                    <a href="https://hikmah.net" target="_blank" title="Hikmah" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 hover:bg-[#20B2AA] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                    <a href="https://hikmah.net/@ammehedihasan" target="_blank" class="p-4 bg-slate-50 rounded-full text-slate-600 hover:bg-[#20B2AA] hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 25.9" class="w-6 h-6" fill="currentColor">
+                            <path d="M16.1,14.1c-0.5,0.1-1,0.2-1.5,0.2c-0.5,0-0.9-0.5-0.8-1c0,0,2.7-11.1-3-12.6c-3.4-0.9-7.3,2.8-9.2,9.5
+                                c0,0.1-2,7.5,0.7,11.8c0.8,1.3,2.2,2.2,4,2.4c0.4,0,0.8,0,1.2,0c0,0,0,0,0,0c5.3-0.7,8.3-7.6,9.1-9.8
+                                C16.6,14.4,16.4,14.1,16.1,14.1z"/>
+                            <path d="M16.9,11.7c0.5-0.1,1-0.2,1.5-0.2c0.5,0,0.9,0.5,0.8,1c0,0-2.7,11.1,3,12.6c3.4,0.9,7.3-2.8,9.2-9.5
+                                c0-0.1,2-7.5-0.7-11.8c-0.8-1.3-2.2-2.2-4-2.4c-0.4,0-0.6,0-0.8,0c0,0-0.4,0-0.4,0c-5.3,0.7-8.3,7.6-9.1,9.8
+                                C16.4,11.5,16.6,11.8,16.9,11.7z"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -508,9 +559,9 @@
 
     </main>
 
-    <footer class="bg-white dark:bg-night border-t border-slate-100 dark:border-slate-800 py-8 transition-colors">
+    <footer class="bg-white border-t border-slate-100 py-8 transition-colors">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-slate-500 dark:text-slate-500 text-sm">
+            <p class="text-slate-500 text-sm">
                 &copy; <span id="year"></span> A M Mehedi Hasan. All Rights Reserved.
             </p>
         </div>
@@ -604,24 +655,13 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             const glass = nav.querySelector('.glass');
-            
-            // Check for dark mode via CSS media query match
-            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
             if (window.scrollY > 20) {
                 nav.classList.add('shadow-md');
-                if(isDarkMode) {
-                    glass.style.background = 'rgba(17, 17, 17, 0.9)'; // Night
-                } else {
-                    glass.style.background = 'rgba(247, 247, 247, 0.9)'; // Sea Salt
-                }
+                glass.style.background = 'rgba(247, 247, 247, 0.9)'; // Sea Salt
             } else {
                 nav.classList.remove('shadow-md');
-                if(isDarkMode) {
-                    glass.style.background = 'rgba(17, 17, 17, 0.8)';
-                } else {
-                    glass.style.background = 'rgba(247, 247, 247, 0.8)';
-                }
+                glass.style.background = 'rgba(247, 247, 247, 0.8)';
             }
         });
 
