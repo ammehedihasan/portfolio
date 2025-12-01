@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | A M Mehedi Hasan</title>
+    <link rel="icon" href="favicon.svg" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Custom Palette Mapping
+                        night: '#111111',
+                        seasalt: '#f7f7f7',
+                        malibu: '#9292fc',
+                        blueribbon: '#0140ff',
+                        hivis: '#dcfd73',
+                        
+                        // Semantic Mapping
+                        brand: {
+                            50: '#eff6ff', 
+                            100: '#dbeafe',
+                            400: '#9292fc', // Malibu
+                            500: '#0140ff', // Blue Ribbon (Primary)
+                            600: '#0033cc', // Darker Blue for hover
+                            900: '#001a80',
+                        },
+                        // Overriding Slate for exact palette backgrounds
+                        slate: {
+                            50: '#f7f7f7',  // Sea Salt
+                            100: '#f0f0f0',
+                            200: '#e0e0e0',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111111', // Night
+                            950: '#0a0a0a', 
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f7f7f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header class="fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="glass shadow-sm">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-3 group">
+                    <img src="logo.svg" alt="Logo" class="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300">
+                    <span class="font-display font-bold text-lg tracking-tight text-slate-900 group-hover:text-brand-500 transition-colors">A M Mehedi Hasan</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-36 md:pt-24 overflow-hidden">
+        <section id="thank-you" class="min-h-[80vh] flex items-center justify-center relative px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <div class="inline-block p-4 rounded-full bg-brand-50 text-brand-500 mb-6">
+                    <i data-lucide="check-circle" class="w-12 h-12"></i>
+                </div>
+                <h1 class="font-display font-bold text-4xl md:text-5xl text-slate-900 mb-4">Thank You!</h1>
+                <p class="text-slate-600 text-lg mb-8">Your message has been sent successfully. I will get back to you as soon as possible.</p>
+                <a href="/" class="px-8 py-4 bg-brand-500 text-white rounded-xl font-semibold hover:bg-brand-600 transition-all duration-300 shadow-xl shadow-brand-500/20 flex items-center justify-center gap-2 group w-max mx-auto">
+                    Go back to Home
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-8 transition-colors">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-500 text-sm">
+                &copy; <span id="year"></span> A M Mehedi Hasan. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Footer Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
