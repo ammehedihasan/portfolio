@@ -33,16 +33,12 @@
                         seasalt: '#f7f7f7',
                         malibu: '#9292fc',
                         blueribbon: '#0140ff',
-                        hivis: '#dcfd73',
                         
                         // Semantic Mapping
                         brand: {
-                            50: '#eff6ff', 
-                            100: '#dbeafe',
                             400: '#9292fc', // Malibu
                             500: '#0140ff', // Blue Ribbon (Primary)
                             600: '#0033cc', // Darker Blue for hover
-                            900: '#001a80',
                         },
                         // Overriding Slate for exact palette backgrounds
                         slate: {
@@ -79,21 +75,6 @@
     </script>
 
     <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f7f7f7;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d1d5db;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #9ca3af;
-        }
-
         /* Animation Utilities */
         .reveal {
             opacity: 0;
@@ -108,9 +89,9 @@
 
         /* Glassmorphism Default (Light) */
         .glass {
-            background: rgba(247, 247, 247, 0.8); /* Sea Salt with opacity */
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: #f7f7f7 !important; /* Sea Salt with 100% opacity */
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
@@ -122,43 +103,7 @@
             background-image: linear-gradient(to right, #0140ff, #9292fc); /* Blue Ribbon to Malibu */
         }
 
-        /* Google Form Styling to Blend with Website */
-        .google-form-wrapper {
-            overflow: hidden;
-            border-radius: 1rem;
-        }
-
-        .google-form-wrapper iframe {
-            border: none !important;
-            border-radius: 1rem !important;
-        }
-
-        /* Hide Google Form branding and headers */
-        .google-form-wrapper iframe::before {
-            content: '';
-            display: block;
-        }
-
-        /* Light Mode: Match website background */
-        .google-form-wrapper {
-            background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Enhanced Form Content Styling */
-        .google-form-wrapper iframe {
-            filter: contrast(1.05) brightness(1) saturate(1.1);
-            backdrop-filter: blur(0px);
-        }
-
-        /* Additional styling via CSS variables for form inputs */
-        .google-form-wrapper {
-            --form-bg: #ffffff;
-            --form-text: #111111;
-            --form-border: #e0e0e0;
-            --form-focus: #0140ff;
-            --form-label: #374151;
-        }
+    
     </style>
 </head>
 
@@ -248,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="order-1 md:order-2 flex justify-center reveal delay-200">
+                <div class="order-1 md:order-2 flex justify-center reveal">
                     <div class="relative z-10">
                         <!-- Abstract shapes behind image -->
                         <div class="absolute -inset-4 bg-gradient-to-tr from-brand-100 to-slate-100 rounded-[2rem] transform rotate-6 scale-105 -z-10 transition-colors"></div>
@@ -338,7 +283,7 @@
                     </div>
 
                     <!-- Service Card 2 -->
-                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="layers" class="w-6 h-6"></i>
                         </div>
@@ -349,7 +294,7 @@
                     </div>
 
                     <!-- Service Card 3 -->
-                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-200">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="pen-tool" class="w-6 h-6"></i>
                         </div>
@@ -371,7 +316,7 @@
                     </div>
 
                     <!-- Service Card 5 -->
-                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-100">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="box" class="w-6 h-6"></i>
                         </div>
@@ -382,7 +327,7 @@
                     </div>
 
                     <!-- Service Card 6 -->
-                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal delay-200">
+                    <div class="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-brand-400 hover:bg-white hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300 reveal">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                             <i data-lucide="film" class="w-6 h-6"></i>
                         </div>
@@ -413,9 +358,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4 reveal delay-200">
+                    <div class="grid grid-cols-2 gap-4 reveal">
                         <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-                            <!-- Added counter class and data attributes -->
                             <h3 class="font-display font-bold text-3xl text-brand-500 mb-1 counter" data-target="98" data-suffix="%">0%</h3>
                             <p class="text-sm text-slate-400">Client Satisfaction</p>
                         </div>
@@ -469,7 +413,7 @@
                     </a>
 
                     <!-- Dribbble Card -->
-                    <a href="https://dribbble.com/ammehedihasan" target="_blank" class="group relative overflow-hidden rounded-2xl bg-pink-500 h-64 flex flex-col justify-center items-center text-center p-8 transition-transform duration-300 hover:-translate-y-2 reveal delay-100">
+                    <a href="https://dribbble.com/ammehedihasan" target="_blank" class="group relative overflow-hidden rounded-2xl bg-pink-500 h-64 flex flex-col justify-center items-center text-center p-8 transition-transform duration-300 hover:-translate-y-2 reveal">
                         <div class="absolute inset-0 bg-gradient-to-br from-pink-400 to-pink-600 opacity-100"></div>
                          <!-- Decorative circle -->
                          <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-white opacity-10 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
@@ -499,7 +443,7 @@
                 <p class="text-slate-600 text-lg mb-10">Whether you need a brand overhaul or a social media refresh, fill out the form below.</p>
                 
                 <!-- Contact Form -->
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLSemz8Ob6OxK9yJLKiblRcR7yy4qY9ZMuajz8VGw8E8OObAqgw/formResponse" method="POST" class="max-w-xl mx-auto space-y-6 text-left mb-16">
+                <form id="contactForm" class="max-w-xl mx-auto space-y-6 text-left mb-16">
                     <div>
                         <label for="entry.1120608975" class="block text-sm font-medium text-slate-700 mb-2">Name</label>
                         <input type="text" id="name" name="entry.1120608975" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all" placeholder="Your Name">
@@ -651,17 +595,13 @@
             observer.observe(el);
         });
 
-        // Navbar Glass Scroll Effect
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            const glass = nav.querySelector('.glass');
-
             if (window.scrollY > 20) {
                 nav.classList.add('shadow-md');
-                glass.style.background = 'rgba(247, 247, 247, 0.9)'; // Sea Salt
             } else {
                 nav.classList.remove('shadow-md');
-                glass.style.background = 'rgba(247, 247, 247, 0.8)';
             }
         });
 
@@ -697,6 +637,29 @@
 
         document.querySelectorAll('.counter').forEach(counter => {
             counterObserver.observe(counter);
+        });
+
+        // Form Submission Handler
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Submit to Google Form
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSemz8Ob6OxK9yJLKiblRcR7yy4qY9ZMuajz8VGw8E8OObAqgw/formResponse', {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                // Redirect to thank you page after form submission
+                window.location.href = 'thank-you.html';
+            }).catch(error => {
+                console.error('Error:', error);
+                // Still redirect even if there's an error
+                window.location.href = 'thank-you.html';
+            });
         });
     </script>
 </body>
